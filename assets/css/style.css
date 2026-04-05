@@ -1,0 +1,41 @@
+/* HEADER */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.nav a {
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+.header-actions span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* MAIN */
+.main {
+  min-height: 500px;
+  padding: 40px 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
