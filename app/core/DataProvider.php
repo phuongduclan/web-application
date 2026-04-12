@@ -1,4 +1,3 @@
-<?php
 class DataProvider {
     private static $instance = null;
     private $conn;
@@ -22,7 +21,7 @@ class DataProvider {
         return self::$instance;
     }
 
-    public function ExecuteQuery($query, $params = []) {
+    public function executeQuery($query, $params = []) {
         $stmt = $this->conn->prepare($query);
 
         foreach ($params as $key => $value) {
@@ -31,5 +30,16 @@ class DataProvider {
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function executeNonQuery($query, $params = []) {
+        $stmt = $this->conn->prepare($query);
+
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+
+        $stmt->execute();
+        return $stmt->rowCount(); // số dòng bị ảnh hưởng
     }
 }

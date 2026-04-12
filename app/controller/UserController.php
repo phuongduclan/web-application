@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../model/User.php';
 
 class AuthController {
     public function login() {
@@ -7,9 +7,26 @@ class AuthController {
         $password = $_POST['password'] ?? '';
 
         if (User::login($email, $password)) {
-            echo "Đăng nhập thành công";
+            return true;
         } else {
-            echo "Sai email hoặc mật khẩu";
+            return false;
         }
     }
+    public function registerAccount() {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirm = $_POST['confirmPassword'] ?? '';
+
+    if ($password !== $confirm) {
+        return false;
+    }
+
+    $result = User::register($email, $password);
+
+    if ($result === true) {
+        return true;
+    } else {
+        return false;
+    }
+}
 }
