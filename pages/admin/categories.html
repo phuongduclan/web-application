@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Danh mục — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body class="trang-danh-muc">
+  <div id="khung-admin">
+    <aside id="thanh-ben">
+      <p id="tieu-de-ben">ADMIN</p>
+      <nav id="menu-ben" aria-label="Menu chính">
+        <a href="dashboard.html" id="muc-tong-quan">Tổng quan</a>
+        <a href="products.html" id="muc-san-pham">Sản phẩm</a>
+        <a href="categories.html" id="muc-danh-muc" class="dang-chon">Danh mục</a>
+        <a href="orders.html" id="muc-don-hang">Đơn hàng</a>
+        <a href="users.html" id="muc-nguoi-dung">Người dùng</a>
+        <a href="payments.html" id="muc-giao-dich">Giao dịch</a>
+      </nav>
+    </aside>
+
+    <div id="vung-chinh">
+      <header id="dau-trang">
+        <h1 id="tieu-de-trang">Quản lý Danh mục</h1>
+        <div id="khu-chao">
+          <span id="loi-chao"></span>
+          <button type="button" id="nut-thoat">Đăng xuất</button>
+        </div>
+      </header>
+
+      <main id="noi-dung">
+        <div id="khu-danh-muc">
+          <div id="hang-tren-dm">
+            <h2 id="tieu-noi-dm">Quản lý Danh mục</h2>
+            <button type="button" id="nut-them-dm">Thêm danh mục</button>
+          </div>
+
+          <div id="hop-ds-dm">
+            <ul id="ds-danh-muc"></ul>
+          </div>
+
+          <section id="form-dm" aria-labelledby="tieu-form-dm">
+            <h3 id="tieu-form-dm">Thêm danh mục</h3>
+            <form id="bieu-mau-dm" action="#" method="post">
+              <div id="o-nhom-ten">
+                <label id="nhan-ten-dm" for="o-ten-dm">Tên danh mục</label>
+                <input type="text" id="o-ten-dm" name="ten_dm" autocomplete="off">
+              </div>
+              <div id="hang-nut-dm">
+                <button type="submit" id="nut-luu-dm">Lưu</button>
+                <button type="button" id="nut-huy-dm">Hủy</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+
+      <footer id="chan-trang">
+        <p id="ban-quyen"></p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

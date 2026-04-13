@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tổng quan — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body>
+  <div id="khung-admin">
+    <aside id="thanh-ben">
+      <p id="tieu-de-ben">ADMIN</p>
+      <nav id="menu-ben" aria-label="Menu chính">
+        <a href="dashboard.html" id="muc-tong-quan" class="dang-chon">Tổng quan</a>
+        <a href="products.html" id="muc-san-pham">Sản phẩm</a>
+        <a href="categories.html" id="muc-danh-muc">Danh mục</a>
+        <a href="orders.html" id="muc-don-hang">Đơn hàng</a>
+        <a href="users.html" id="muc-nguoi-dung">Người dùng</a>
+        <a href="payments.html" id="muc-giao-dich">Giao dịch</a>
+      </nav>
+    </aside>
+
+    <div id="vung-chinh">
+      <header id="dau-trang">
+        <h1 id="tieu-de-trang">Tổng quan</h1>
+        <div id="khu-chao">
+          <span id="loi-chao"></span>
+          <button type="button" id="nut-thoat">Đăng xuất</button>
+        </div>
+      </header>
+
+      <main id="noi-dung">
+        <div id="khu-thong-ke">
+          <article id="the-doanh-thu">
+            <p class="gia-tri"></p>
+            <p class="nhan"></p>
+          </article>
+          <article id="the-nguoi-dung">
+            <p class="gia-tri"></p>
+            <p class="nhan"></p>
+          </article>
+          <article id="the-don-hang">
+            <p class="gia-tri"></p>
+            <p class="nhan"></p>
+          </article>
+        </div>
+
+        <section id="hop-bang-don">
+          <h2 id="tieu-bang"></h2>
+          <div id="khung-cuon-bang">
+            <table id="bang-du-lieu">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Mã khách hàng</th>
+                  <th>Tổng tiền</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer id="chan-trang">
+        <p id="ban-quyen"></p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

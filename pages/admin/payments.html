@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý Người dùng — Admin</title>
+  <title>Quản lý Giao dịch — Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/admin.css">
 </head>
-<body class="trang-nguoi-dung">
+<body class="trang-giao-dich">
   <div id="khung-admin">
     <aside id="thanh-ben">
       <p id="tieu-de-ben">ADMIN PANEL</p>
@@ -18,14 +18,14 @@
         <a href="products.html" id="muc-san-pham">Sản phẩm</a>
         <a href="categories.html" id="muc-danh-muc">Danh mục</a>
         <a href="orders.html" id="muc-don-hang">Đơn hàng</a>
-        <a href="users.html" id="muc-nguoi-dung" class="dang-chon">Người dùng</a>
-        <a href="payments.html" id="muc-giao-dich">Giao dịch</a>
+        <a href="users.html" id="muc-nguoi-dung">Người dùng</a>
+        <a href="payments.html" id="muc-giao-dich" class="dang-chon">Giao dịch</a>
       </nav>
     </aside>
 
     <div id="vung-chinh">
       <header id="dau-trang">
-        <h1 id="tieu-de-trang">Quản lý Người dùng</h1>
+        <h1 id="tieu-de-trang">Quản lý Giao dịch</h1>
         <div id="khu-chao">
           <span id="loi-chao"></span>
           <button type="button" id="nut-thoat">Đăng xuất</button>
@@ -34,23 +34,28 @@
 
       <main id="noi-dung">
         <div id="ket-qua">
-          <div id="hang-tren-nd">
-            <p id="dong-tong-so">
-              Tổng số: <span id="so-luong-nd"></span> <span id="don-vi-nd">người dùng</span>
+          <div id="hang-dieu-khien-gd">
+            <form id="bieu-mau-tim-gd" action="#" method="get">
+              <input type="search" id="o-tim-gd" name="q" placeholder="" autocomplete="off" aria-label="Tìm giao dịch">
+              <button type="submit" id="nut-tim-gd">Tìm kiếm</button>
+            </form>
+            <p id="tom-tat-gd">
+              <span class="muc-tom">Tổng giao dịch: <strong id="so-giao-dich"></strong></span>
+              <span class="phan-cach" aria-hidden="true">|</span>
+              <span class="muc-tom">Tổng thu: <strong id="tong-thu"></strong></span>
             </p>
-            <input type="search" id="o-tim-nd" name="q" placeholder="" autocomplete="off" aria-label="Tìm người dùng">
           </div>
 
-          <div id="hop-bang-nd">
-            <div id="khung-keo-bang-nd">
-              <table id="bang-nguoi-dung">
+          <div id="hop-bang-gd">
+            <div id="khung-keo-bang-gd">
+              <table id="bang-giao-dich">
                 <thead>
                   <tr>
-                    <th>Mã ND</th>
-                    <th>Mã khách hàng</th>
-                    <th>Email</th>
-                    <th>Vai trò</th>
-                    <th>Số đơn hàng</th>
+                    <th>Mã thanh toán</th>
+                    <th>Mã hóa đơn</th>
+                    <th>Ngày thanh toán</th>
+                    <th>Số tiền</th>
+                    <th>Phương thức thanh toán</th>
                   </tr>
                 </thead>
                 <tbody></tbody>

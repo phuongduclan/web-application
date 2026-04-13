@@ -1,0 +1,224 @@
+
+#khung-admin {
+    --mau-nen: #f5f6f8;
+    --mau-the: #ffffff;
+    --mau-chu: #111111;
+    --mau-phu: #666666;
+    --mau-nhat: #999999;
+    --vien-nhe: #e8e8e8;
+    --bo-goc: 12px;
+    --rong-ben: 220px;
+  
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size: 14px;
+    color: var(--mau-chu);
+    background: var(--mau-nen);
+  }
+  
+  #thanh-ben {
+    width: var(--rong-ben);
+    flex-shrink: 0;
+    background: var(--mau-the);
+    border-right: 1px solid var(--vien-nhe);
+    padding: 24px 16px;
+    box-sizing: border-box;
+  }
+  
+  #tieu-de-ben {
+    margin: 0 0 28px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  
+  #menu-ben {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  #menu-ben a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--mau-chu);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  #menu-ben a:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+  
+  #menu-ben a.dang-chon {
+    background: var(--mau-chu);
+    color: #fff;
+  }
+  
+  #vung-chinh {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  
+  #dau-trang {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 28px;
+    background: var(--mau-the);
+    border-bottom: 1px solid var(--vien-nhe);
+  }
+  
+  #tieu-de-trang {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  #khu-chao {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  #loi-chao {
+    font-size: 14px;
+    color: var(--mau-chu);
+  }
+  
+  #nut-thoat {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid var(--mau-chu);
+    border-radius: 8px;
+    color: var(--mau-chu);
+  }
+  
+  #nut-thoat:hover {
+    background: #f3f3f3;
+  }
+  
+  #noi-dung {
+    flex: 1;
+    padding: 24px 28px 32px;
+    box-sizing: border-box;
+  }
+  
+  #khu-thong-ke {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: 960px) {
+    #khu-thong-ke {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  #the-doanh-thu,
+  #the-nguoi-dung,
+  #the-don-hang {
+    background: var(--mau-the);
+    border-radius: var(--bo-goc);
+    padding: 22px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+  
+  #the-doanh-thu .gia-tri,
+  #the-nguoi-dung .gia-tri,
+  #the-don-hang .gia-tri {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  #the-doanh-thu .nhan,
+  #the-nguoi-dung .nhan,
+  #the-don-hang .nhan {
+    margin: 0;
+    font-size: 13px;
+    color: var(--mau-phu);
+  }
+  
+  #hop-bang-don {
+    background: var(--mau-the);
+    border-radius: var(--bo-goc);
+    padding: 20px 24px 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+  
+  #tieu-bang {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  #khung-cuon-bang {
+    overflow-x: auto;
+  }
+  
+  #bang-du-lieu {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  
+  #bang-du-lieu th,
+  #bang-du-lieu td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--vien-nhe);
+  }
+  
+  #bang-du-lieu th {
+    font-weight: 700;
+  }
+  
+  #bang-du-lieu tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  #bang-du-lieu .tt-xac-nhan {
+    color: var(--mau-chu);
+    font-size: 12px;
+  }
+  
+  #bang-du-lieu .tt-cho-xu-ly {
+    color: var(--mau-phu);
+    font-size: 12px;
+  }
+  
+  #bang-du-lieu .tt-da-huy {
+    color: var(--mau-nhat);
+    font-size: 12px;
+  }
+  
+  #chan-trang {
+    padding: 12px 28px;
+    font-size: 12px;
+    color: var(--mau-phu);
+    border-top: 1px solid var(--vien-nhe);
+    background: var(--mau-the);
+  }
+  
+  #ban-quyen {
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
