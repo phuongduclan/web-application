@@ -1,5 +1,6 @@
 <?php
-// Codeigniter
+require './controller/BaseController.php';
+// Hàm ucfirst() để ghi hoa chữ cái đầu.
 $controllerName = ucfirst((strtolower($_REQUEST['controller']) ?? 'Homepage').'Controller');
 
 $actionName=strtolower($_REQUEST['action'] ?? 'index');

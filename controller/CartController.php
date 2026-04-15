@@ -1,8 +1,8 @@
 <?php
 
-class CartController {
+class CartController extends BaseController {
     public function index(){
-        echo __METHOD__;
+        return $this->view('frontend.carts.index');
     }
 
     public function show(){
