@@ -8,7 +8,7 @@ class CategoryController extends BaseController {
     }
     public function index()
     {
-        $categoryList=$this->categoryModel->getAll();
+        $categoryList = $this->categoryModel->getAllCategory();
         return $this->view('frontend.categories.index',[
             'categories' => $categoryList
         ]);

@@ -1,11 +1,12 @@
 <?php
-class CategoryModel{
+class CategoryModel extends BaseModel
+{
     // Table name form database.
     const TABLE ='Category';
 
-    public function getAll()
+    public function getAllCategory()
     {
-        return __METHOD__;
+        return $this->getAll(self::TABLE);
     }
 
     public function findById($id)

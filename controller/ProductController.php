@@ -8,7 +8,7 @@ class ProductController extends BaseController{
         $this->productModel=new ProductModel();
     }
     public function index(){
-        $productList=$this->productModel->getAll();
+        $productList=$this->productModel->getAllProduct();
         return $this->view('frontend.products.index',[
             'products'=> $productList
         ]);
