@@ -13,8 +13,11 @@ class CategoryController extends BaseController {
             'categories' => $categoryList
         ]);
     }
-    public function store()
+    public function show()
     {
-        echo __METHOD__;
+        $id=$_GET['id'];
+        $category=$this->categoryModel->findByCategoryId($id);
+        echo '<pre>';
+        print_r($category);
     }
 }

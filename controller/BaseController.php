@@ -13,12 +13,13 @@ class BaseController{
         extract($data);
         $viewPath=self::VIEW_FOLDER_NAME.'/'.str_replace('.','/',$viewPath).'.php';
         return require ($viewPath);
+        // frontend.products.index ==> require ./view/frontend/products/index
     }
     protected function loadModel($modelPath)
     {
         $modelPath=self::MODEL_FOLDER_NAME.'/'.$modelPath.'.php';
         return require ($modelPath);
+        // require ./model/ProductModel
     }
-
 }
 ?>

@@ -11,10 +11,19 @@ class ProductModel extends BaseModel {
     // Lấy 1 dòng sản phẩm theo mã sản phẩm
     public function findByProductId($id)
     {
-        return __METHOD__;
+        return $this->findById(self::TABLE,$id);
+    }
+    // Thêm sản phẩm
+    public function insertProduct($data)
+    {
+        $this->create(self::TABLE,$data);
+    }
+    public function updateProduct()
+    {
+        
     }
     // Xóa sản phẩm
-    public function delete(){
+    public function deleteProduct(){
         return __METHOD__;
     }
 }

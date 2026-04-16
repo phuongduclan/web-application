@@ -9,11 +9,11 @@ class CategoryModel extends BaseModel
         return $this->getAll(self::TABLE);
     }
 
-    public function findById($id)
+    public function findByCategoryId($id)
     {
-        return __METHOD__;
+        return $this->findById(self::TABLE,$id);
     }
-    public function delete(){
+    public function deleteCategory(){
         return __METHOD__;
     }
 }

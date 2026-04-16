@@ -7,7 +7,7 @@ class Database
     {
         try {
             $this->connect = new PDO(
-                "sqlsrv:Server=localhost\\SQLEXPRESS;Database=web_app;Encrypt=true;TrustServerCertificate=true",
+                "sqlsrv:Server=localhost\\SQLEXPRESS;Database=web_database;Encrypt=true;TrustServerCertificate=true",
                 "sa",
                 "@Bina0608"
             );

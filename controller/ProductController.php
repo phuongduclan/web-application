@@ -7,15 +7,24 @@ class ProductController extends BaseController{
         $this->loadModel('ProductModel');
         $this->productModel=new ProductModel();
     }
+    
     public function index(){
         $productList=$this->productModel->getAllProduct();
         return $this->view('frontend.products.index',[
             'products'=> $productList
         ]);
     }
-
-    public function show(){
+    public function store(){
         echo __METHOD__;
+    }
+    public function show(){
+        $id=$_GET['id'];
+        $product=$this->productModel->findByProductId($id);
+        echo '<pre>';
+        print_r($product);
+    }
+    public function update(){
+
     }
 }
 
