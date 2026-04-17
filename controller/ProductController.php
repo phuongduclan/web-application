@@ -15,7 +15,8 @@ class ProductController extends BaseController{
         ]);
     }
     public function store(){
-        echo __METHOD__;
+        $data=[];
+        $this->productModel->insertProduct($data);
     }
     public function show(){
         $id=$_GET['id'];
@@ -24,7 +25,14 @@ class ProductController extends BaseController{
         print_r($product);
     }
     public function update(){
-
+        $id=$_GET['id'];
+        $data=[];
+        $this->productModel->updateProduct($id,$data);
+    }
+    public function delete()
+    {
+        $id=$_GET['id'];
+        $this->productModel->deleteProduct($id);
     }
 }
 

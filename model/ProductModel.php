@@ -18,13 +18,18 @@ class ProductModel extends BaseModel {
     {
         $this->create(self::TABLE,$data);
     }
-    public function updateProduct()
+    public function updateProduct($id,$data)
     {
-        
+        $this->update(self::TABLE,$id,$data);
     }
     // Xóa sản phẩm
-    public function deleteProduct(){
-        return __METHOD__;
+    public function deleteProduct($id){
+        $this->delete(self::TABLE,$id);
+    }
+    // Lấy danh sách sản phẩm theo mã danh mục
+    public function getAllProductByCategoryId($categoryId){
+        $sql="SELECT * FROM " .self::TABLE. " WHERE category_id=?";
+        return $this->executeQuery($sql,[$categoryId]);
     }
 }
 ?>

@@ -55,13 +55,13 @@ class BaseModel extends Database
         $sql="DELETE FROM {$table} WHERE id={$id}";
         return $this->executeNonQuery($sql);
     }
-    private function executeQuery($sql,array $params=[])
+    protected function executeQuery($sql,array $params=[])
     {
         $stmt=$this->connect->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    private function executeNonQuery($sql, array $params = [])
+    protected function executeNonQuery($sql, array $params = [])
     {
         $stmt = $this->connect->prepare($sql);
         return $stmt->execute($params);
