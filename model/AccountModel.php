@@ -2,7 +2,7 @@
 class AccountModel extends BaseModel {
     const TABLE = 'Account';
 
-    public function findByEmail($email) {
+    public function findAccountByEmail($email) {
         $sql="SELECT  * FROM ".self::TABLE." WHERE email = ? ";
         $stmt=$this->connect->prepare($sql);
         $stmt->execute([$email]);
