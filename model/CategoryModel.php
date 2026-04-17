@@ -13,8 +13,17 @@ class CategoryModel extends BaseModel
     {
         return $this->findById(self::TABLE,$id);
     }
-    public function deleteCategory(){
-        return __METHOD__;
+    public function insertCategory($data)
+    {
+        return $this->create(self::TABLE,$data);
     }
+    public function updateCategory($id,$data)
+    {
+        return $this->insert(self::TABLE,$id,$data);
+    }
+    public function deleteCategory($id){
+        return $this->delete(self::TABLE,$id);
+    }
+
 }
 ?>
