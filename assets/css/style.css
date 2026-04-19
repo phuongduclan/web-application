@@ -1,7 +1,7 @@
 /* HEADER */
 .header {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: #111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-inner {
@@ -12,18 +12,41 @@
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 22px;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+  letter-spacing: 4px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
 }
 
 .nav a {
-  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
   font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #ccc;
+}
+
+.nav a.active {
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 4px;
 }
 
 .header-actions span {
   margin-left: 15px;
   cursor: pointer;
+  color: #fff;
 }
 
 /* MAIN */
