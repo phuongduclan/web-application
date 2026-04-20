@@ -17,14 +17,14 @@ class ProductController extends BaseController{
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data=[
-                'name'        => $_POST['name'],
-                'category_id' => $_POST['category_id']
+                'name'        => $_POST['name']??null;
+                'category_id' => $_POST['category_id']??null;
             ];
             $this->productModel->insertProduct($data);
         }
     }
     public function show(){
-        $id=$_GET['id'] ?? null;
+        $id=$_GET['product_id'] ?? null;
         if($id === null) return;
         $product=$this->productModel->findByProductId($id);
         echo '<pre>';

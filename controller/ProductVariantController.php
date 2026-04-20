@@ -32,7 +32,7 @@ class ProductVariantController extends BaseController{
         print_r($productVariant);
     }
     public function update(){
-        $id=$_GET['id'] ?? null;
+        $id=$_GET['variant_id'] ?? null;
         if($id === null) return;
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data=[

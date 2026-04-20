@@ -34,7 +34,7 @@ class InvoiceController extends BaseController{
         }
     }
     public function update(){
-        $id=$_GET["id"] ?? null;
+        $id=$_GET["invoice_id"] ?? null;
         if($id === null) return;
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $status_id=$_POST["status_id"];

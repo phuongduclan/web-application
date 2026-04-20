@@ -9,15 +9,7 @@ class CartController extends BaseController {
         echo __METHOD__;
     }
 
-    public function create(){
-        echo __METHOD__;
-    }
-
     public function store(){
-        echo __METHOD__;
-    }
-
-    public function edit(){
         echo __METHOD__;
     }
 

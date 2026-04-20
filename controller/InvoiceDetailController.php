@@ -13,9 +13,14 @@ class InvoiceDetailController extends BaseController{
         print_r($invoiceDetails);
     }
     public function store(){
+        $id=$_GET['invoice_id']??null;
+        if($id===null)return;
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data=[
-
+                'variant_id' => $_POST['variant_id'],
+                'invoice_id' => $id,
+                'price' => $_POST['price'],
+                'quantity' => $_POST['quantity']
             ];
             $this->invoiceDetailModel->insertInvoiceDetail($data);
         }

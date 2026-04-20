@@ -36,7 +36,7 @@ class CategoryController extends BaseController {
         }
     }
     public function update(){
-        $id=$_GET['id'] ?? null;
+        $id=$_GET['category_id'] ?? null;
         if($id === null) return;
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data=[
