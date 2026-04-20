@@ -34,10 +34,12 @@ class CartController extends BaseController {
     public function update(){
         $id=$_GET['variant_id']??null;
         if($id===null)return;
-        $quantity=$_POST['quantity']??0;
-        if($quantity==0){return;}
-        $_SESSION['cart'][$id]['qty'] = $quantity;
-        header('location:index.php?controller=cart');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $quantity=$_POST['quantity']??0;
+            if($quantity==0){return;}
+            $_SESSION['cart'][$id]['qty'] = $quantity;
+            header('location:index.php?controller=cart');
+        }
     }
     public function destroy(){
         $id=$_GET['variant_id']??null;
