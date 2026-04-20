@@ -28,17 +28,27 @@ class CategoryController extends BaseController {
         ]);
     }
     public function store(){
-        $data=[];
-        $this->categoryModel->insertCategory($data);
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $data=[
+                'name' => $_POST['name'] ?? ''
+            ];
+            $this->categoryModel->insertCategory($data);
+        }
     }
     public function update(){
-        $id=$_GET['id'];
-        $data=[];
-        $this->categoryModel->updateCategory($id,$data);
+        $id=$_GET['id'] ?? null;
+        if($id === null) return;
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $data=[
+                'name' => $_POST['name'] ??null
+            ];
+            $this->categoryModel->updateCategory($id,$data);
+        }
     }
     public function delete()
     {
-        $id=$_GET['id'];
+        $id=$_GET['id'] ?? null;
+        if($id === null) return;
         $this->categoryModel->deleteCategory($id);
     }
 }

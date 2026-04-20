@@ -3,6 +3,10 @@ class ProductVariantModel extends BaseModel{
     // Table name form database.
     const TABLE ='ProductVariant';
 
+    public function getAllProductVariant(){
+        $sql="SELECT * FROM " .self::TABLE;
+        return $this->executeQuery($sql);
+    }
     public function findProductVariantByProductId($productId){
         $sql="SELECT * FROM " .self::TABLE. " WHERE product_id=?";
         return $this->executeQuery($sql,[$productId]);

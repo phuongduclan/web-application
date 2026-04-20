@@ -3,6 +3,9 @@ class InvoiceModel extends BaseModel{
     // Table name form database.
     const TABLE ='Invoice';
 
+    public function getAllInvoice(){
+        return $this->getAll(self::TABLE);
+    }
     public function getInvoiceByUserId($userId)
     {
         $sql="SELECT * FROM " .self::TABLE. " WHERE user_id=?";
