@@ -1,6 +1,6 @@
 <?php
 class AuthController extends BaseController {
-private $accountModel;
+    private $accountModel;
     public function __construct() {
         $this->loadModel('AccountModel');
         $this->accountModel=new AccountModel();
@@ -26,7 +26,7 @@ private $accountModel;
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_role']  = $user['role_id'];
             $_SESSION['success']    = 'Đăng nhập thành công';
-            }
+        }
     }
     public function register() {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
