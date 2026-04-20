@@ -10,7 +10,6 @@ class AccountModel extends BaseModel {
     }
 
     public function register($data) {
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         return $this->create(self::TABLE, $data);
     }
 }

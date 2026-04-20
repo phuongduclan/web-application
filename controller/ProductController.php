@@ -17,8 +17,8 @@ class ProductController extends BaseController{
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data=[
-                'name'        => $_POST['name']??null;
-                'category_id' => $_POST['category_id']??null;
+                'name'        => $_POST['name']??null,
+                'category_id' => $_POST['category_id']??null,
             ];
             $this->productModel->insertProduct($data);
         }

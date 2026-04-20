@@ -19,7 +19,7 @@ class CategoryModel extends BaseModel
     }
     public function updateCategory($id,$data)
     {
-        return $this->insert(self::TABLE,$id,$data);
+        return $this->update(self::TABLE,$id,$data);
     }
     public function deleteCategory($id){
         return $this->delete(self::TABLE,$id);

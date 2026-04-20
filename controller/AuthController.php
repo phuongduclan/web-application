@@ -26,7 +26,9 @@ class AuthController extends BaseController {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_role']  = $user['role_id'];
             $_SESSION['success']    = 'Đăng nhập thành công';
+            header('Location: /?controller=product&action=index'); return;
         }
+        $this->view('frontend.auth.login');
     }
     public function register() {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -46,6 +48,7 @@ class AuthController extends BaseController {
                             ];
                             $this->accountModel->register($data);
                             $_SESSION['success'] = 'Đăng ký thành công';
+                            header('Location: /?controller=auth&action=login'); return;
                         }
                         else{
                             $_SESSION['error'] = 'Email đăng ký đã tồn tại';
@@ -71,6 +74,7 @@ class AuthController extends BaseController {
 
     public function logout() {
         session_destroy();
+        header('Location: /?controller=auth&action=login'); return;
     }
 }
 ?>
