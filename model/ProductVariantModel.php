@@ -7,6 +7,10 @@ class ProductVariantModel extends BaseModel{
         $sql="SELECT * FROM " .self::TABLE;
         return $this->executeQuery($sql);
     }
+    public function findByProductVariantId($id){
+        $sql="SELECT * FROM " .self::TABLE. " WHERE id=?";
+        return $this->executeQuery($sql,[$id]);
+    }
     public function findProductVariantByProductId($productId){
         $sql="SELECT * FROM " .self::TABLE. " WHERE product_id=?";
         return $this->executeQuery($sql,[$productId]);
