@@ -24,6 +24,10 @@ class CategoryModel extends BaseModel
     public function deleteCategory($id){
         return $this->delete(self::TABLE,$id);
     }
-
+    public function getCategoryForMenu()
+    {
+        $sql="SELECT id, name FROM ".self::TABLE." ORDER BY id";
+        return $this->executeQuery($sql);
+    }
 }
 ?>

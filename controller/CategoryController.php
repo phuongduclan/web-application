@@ -18,11 +18,12 @@ class CategoryController extends BaseController {
     public function show()
     {
         $id = $_GET['id'] ?? null;
-
+        $categoriesMenu =$this->categoryModel->getCategoryForMenu();
         $category = $this->categoryModel->findByCategoryId($id);
         $products = $this->productModel->getAllProductByCategoryId($id);
 
         return $this->view('frontend.categories.show', [
+            'menus'    => $categoriesMenu,
             'category' => $category,
             'products' => $products
         ]);
