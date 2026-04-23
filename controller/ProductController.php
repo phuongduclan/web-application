@@ -24,11 +24,23 @@ class ProductController extends BaseController{
         }
     }
     public function show(){
-        $id=$_GET['product_id'] ?? null;
-        if($id === null) return;
+        $id=$_GET['product_id'] ?? $_GET['id'] ?? null;
+        if($id===null){
+            header('Location: index.php?controller=product&action=index');
+            exit;
+        }
         $product=$this->productModel->findByProductId($id);
-        echo '<pre>';
-        print_r($product);
+        if(empty($product)){
+            header('Location: index.php?controller=product&action=index');
+            exit;
+        }
+        $this->loadModel('ProductVariantModel');
+        $productVariantModel=new ProductVariantModel();
+        $variants=$productVariantModel->findProductVariantByProductId($id);
+        return $this->view('frontend.products.show',[
+            'product'=>$product,
+            'variants'=>$variants,
+        ]);
     }
     public function update(){
         $id=$_GET['id'] ?? null;

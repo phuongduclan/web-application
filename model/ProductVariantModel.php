@@ -9,7 +9,9 @@ class ProductVariantModel extends BaseModel{
     }
     public function findByProductVariantId($id){
         $sql="SELECT * FROM " .self::TABLE. " WHERE id=?";
-        return $this->executeQuery($sql,[$id]);
+        $stmt=$this->connect->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function findProductVariantByProductId($productId){
         $sql="SELECT * FROM " .self::TABLE. " WHERE product_id=?";

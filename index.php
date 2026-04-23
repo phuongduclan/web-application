@@ -6,12 +6,11 @@ require './core/Database.php';
 require './model/BaseModel.php';
 require './controller/BaseController.php';
 
-// Hàm ucfirst() để ghi hoa chữ cái đầu.
-$controllerName = ucfirst((strtolower($_REQUEST['controller']) ?? 'Homepage').'Controller');
+$controllerName = ucfirst(strtolower($_REQUEST['controller'] ?? 'home')).'Controller';
 
 $actionName=strtolower($_REQUEST['action'] ?? 'index');
 
-require "./Controller/${controllerName}.php";
+require __DIR__.'/controller/'.$controllerName.'.php';
 
 $controllerObject=new $controllerName();
 

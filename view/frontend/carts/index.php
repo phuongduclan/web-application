@@ -1,3 +1,3 @@
 <?php
-view('frontend.carts._list');
-?>  
+$this->view('frontend.carts._list', compact('cart', 'cartTotal', 'cartError', 'logged_in'));
+?>
