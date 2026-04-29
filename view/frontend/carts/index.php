@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store</title>
+
+    <link rel="stylesheet" href="./public/css/base.css" />
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link rel="stylesheet" href="./public/css/user.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR OVERLAY -->
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      onclick="closeSidebar()"
+    ></div>
+
+    <!-- SIDEBAR -->
+    <aside class="shop-sidebar hidden-sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <h3>Filter</h3>
+        <span class="close-sidebar" onclick="closeSidebar()">✕</span>
+      </div>
+
+      <div class="filter-box">
+        <h3>Category</h3>
+        <ul>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Shoes</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Price</h3>
+        <ul>
+          <li><a href="#">Under $30</a></li>
+          <li><a href="#">$30 - $50</a></li>
+          <li><a href="#">Over $50</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Collection</h3>
+        <ul>
+          <li><a href="#">New Arrival</a></li>
+          <li><a href="#">Best Seller</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Member</h3>
+        <ul>
+          <li><a href="#">Member Exclusive</a></li>
+          <li><a href="#">Limited Edition</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container header-inner">
+        <div class="header-left">
+          <span class="menu-toggle" onclick="openSidebar()">☰</span>
+          <div class="logo">
+            <img src="./assets/images/logo.png" alt="SÉLINA logo" />
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="./index.html" class="active">Home</a>
+          <a href="./pages/user/products.html">Shop</a>
+          <a href="./pages/user/contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <span>🔍</span>
+          <span>🛒</span>
+          <span>👤</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-text">
+            <h1>New Collection</h1>
+            <p>Discover our latest fashion trends</p>
+            <a href="./pages/user/products.html" class="btn">Shop Now</a>
+          </div>
+
+          <div class="hero-image">
+            <img src="./assets/images/banners/hero-banner.jpg" alt="banner" />
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-products">
+        <div class="container">
+          <div class="section-header">
+            <h2>Featured Products</h2>
+            <p>Our most popular items this week</p>
+          </div>
+
+          <div class="product-grid">
+            <div class="product-card">
+              <img
+                src="./assets/images/products/product-1.jpg"
+                alt="product 1"
+              />
+              <h3>Basic T-Shirt</h3>
+              <p class="price">$25.00</p>
+              <a href="./pages/user/products.html" class="btn">View Detail</a>
+            </div>
+
+            <div class="product-card">
+              <img
+                src="./assets/images/products/product-2.jpg"
+                alt="product 2"
+              />
+              <h3>Casual Hoodie</h3>
+              <p class="price">$45.00</p>
+              <a href="./pages/user/products.html" class="btn">View Detail</a>
+            </div>
+
+            <div class="product-card">
+              <img
+                src="./assets/images/products/product-3.jpg"
+                alt="product 3"
+              />
+              <h3>Classic Jeans</h3>
+              <p class="price">$35.00</p>
+              <a href="./pages/user/products.html" class="btn">View Detail</a>
+            </div>
+
+            <div class="product-card">
+              <img
+                src="./assets/images/products/product-4.jpg"
+                alt="product 4"
+              />
+              <h3>Denim Jacket</h3>
+              <p class="price">$40.00</p>
+              <a href="./pages/user/products.html" class="btn">View Detail</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="category">
+        <div class="container">
+          <div class="section-header">
+            <h2>Shop by Category</h2>
+          </div>
+
+          <div class="category-grid">
+            <div class="category-card">
+              <img src="./assets/images/banners/cat-men.jpg" alt="Men" />
+              <h3>Men</h3>
+            </div>
+
+            <div class="category-card">
+              <img src="./assets/images/banners/cat-women.jpg" alt="Women" />
+              <h3>Women</h3>
+            </div>
+
+            <div class="category-card">
+              <img
+                src="./assets/images/banners/cat-accessories.jpg"
+                alt="Accessories"
+              />
+              <h3>Accessories</h3>
+            </div>
+
+            <div class="category-card">
+              <img src="./assets/images/banners/cat-shoes.jpg" alt="Shoes" />
+              <h3>Shoes</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="promo-banner">
+        <div class="container">
+          <div class="promo-banner-inner">
+            <div class="promo-text">
+              <p class="promo-subtitle">Special Offer</p>
+              <h2>Save up to 50% on New Collection</h2>
+              <a href="./pages/user/products.html" class="btn">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div class="container">
+          <div class="newsletter-inner">
+            <h2>Subscribe Our Newsletter</h2>
+            <p>Get the latest information about products and promotions</p>
+
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Fashion Store</p>
+      </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

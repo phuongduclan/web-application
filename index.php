@@ -9,7 +9,7 @@ $controllerName = ucfirst((strtolower($_REQUEST['controller']) ?? 'Homepage').'C
 
 $actionName=strtolower($_REQUEST['action'] ?? 'index');
 
-require "./Controller/${controllerName}.php";
+require "./controller/" . $controllerName . ".php";
 
 $controllerObject=new $controllerName();
 
