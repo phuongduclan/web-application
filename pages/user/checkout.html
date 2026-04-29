@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Checkout</title>
+
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/user.css" />
+    <link rel="stylesheet" href="../../assets/css/cart-checkout.css" />
+  </head>
+  <body>
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      onclick="closeSidebar()"
+    ></div>
+
+    <aside class="shop-sidebar hidden-sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <h3>Filter</h3>
+        <span class="close-sidebar" onclick="closeSidebar()">✕</span>
+      </div>
+
+      <div class="filter-box">
+        <h3>Category</h3>
+        <ul>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Shoes</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Price</h3>
+        <ul>
+          <li><a href="#">Under $30</a></li>
+          <li><a href="#">$30 - $50</a></li>
+          <li><a href="#">Over $50</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Collection</h3>
+        <ul>
+          <li><a href="#">New Arrival</a></li>
+          <li><a href="#">Best Seller</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+
+      <div class="filter-box">
+        <h3>Member</h3>
+        <ul>
+          <li><a href="#">Member Exclusive</a></li>
+          <li><a href="#">Limited Edition</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <header class="header">
+      <div class="container header-inner">
+        <div class="header-left">
+          <span class="menu-toggle" onclick="openSidebar()">☰</span>
+          <div class="logo">
+            <img src="../../assets/images/logo.png" alt="SÉLINA logo" />
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a href="../../index.html">Home</a>
+          <a href="./products.html">Shop</a>
+          <a href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <span>🔍</span>
+          <a href="./cart.html" aria-label="Cart">🛒</a>
+          <a href="./login.html" aria-label="Account">👤</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="checkout-page">
+        <div class="container">
+          <div class="section-header checkout-header">
+            <p class="page-eyebrow">Secure Checkout</p>
+            <h2>Payment Details</h2>
+            <p>Complete your shipping and payment information to place the order.</p>
+          </div>
+
+          <div class="checkout-layout">
+            <form class="checkout-form" id="checkoutForm">
+              <div class="form-card">
+                <div class="form-card-header">
+                  <h3>Customer Information</h3>
+                  <p>Use your active email so we can send order updates.</p>
+                </div>
+
+                <div class="checkout-grid two-col">
+                  <div class="field-group">
+                    <label for="firstName">First name</label>
+                    <input id="firstName" type="text" placeholder="Selina" required />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="lastName">Last name</label>
+                    <input id="lastName" type="text" placeholder="Pham" required />
+                  </div>
+
+                  <div class="field-group full-width">
+                    <label for="email">Email address</label>
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-card">
+                <div class="form-card-header">
+                  <h3>Shipping Address</h3>
+                  <p>Orders are usually prepared within 24 hours.</p>
+                </div>
+
+                <div class="checkout-grid two-col">
+                  <div class="field-group full-width">
+                    <label for="address">Street address</label>
+                    <input
+                      id="address"
+                      type="text"
+                      placeholder="123 Nguyen Hue Street"
+                      required
+                    />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="city">City</label>
+                    <input id="city" type="text" placeholder="Ho Chi Minh City" required />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="district">District</label>
+                    <input id="district" type="text" placeholder="District 1" required />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" type="tel" placeholder="0123 456 789" required />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="note">Order note</label>
+                    <input id="note" type="text" placeholder="Leave at the front desk" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-card">
+                <div class="form-card-header">
+                  <h3>Payment Method</h3>
+                  <p>Select the option that works best for you.</p>
+                </div>
+
+                <div class="payment-options">
+                  <label class="payment-option">
+                    <input type="radio" name="paymentMethod" checked />
+                    <span>
+                      <strong>Credit / Debit Card</strong>
+                      <small>Visa, Mastercard, JCB</small>
+                    </span>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="paymentMethod" />
+                    <span>
+                      <strong>Cash on Delivery</strong>
+                      <small>Pay when your order arrives</small>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="checkout-grid two-col">
+                  <div class="field-group full-width">
+                    <label for="cardName">Name on card</label>
+                    <input id="cardName" type="text" placeholder="SELINA PHAM" required />
+                  </div>
+
+                  <div class="field-group full-width">
+                    <label for="cardNumber">Card number</label>
+                    <input
+                      id="cardNumber"
+                      type="text"
+                      placeholder="1234 5678 9012 3456"
+                      required
+                    />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="expiry">Expiry date</label>
+                    <input id="expiry" type="text" placeholder="MM/YY" required />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="cvv">CVV</label>
+                    <input id="cvv" type="text" placeholder="123" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="checkout-actions">
+                <a href="./cart.html" class="btn btn-outline">Back to Cart</a>
+                <button type="submit" class="btn">Place Order</button>
+              </div>
+
+              <p class="checkout-message" id="checkoutMessage"></p>
+            </form>
+
+            <aside class="order-card checkout-summary">
+              <h3>Your Order</h3>
+
+              <div class="summary-product">
+                <img
+                  src="../../assets/images/products/product-1.jpg"
+                  alt="Basic T-Shirt"
+                />
+                <div>
+                  <h4>Basic T-Shirt</h4>
+                  <p>Ivory / Size M</p>
+                </div>
+                <strong>$25.00</strong>
+              </div>
+
+              <div class="summary-product">
+                <img
+                  src="../../assets/images/products/product-4.jpg"
+                  alt="Denim Jacket"
+                />
+                <div>
+                  <h4>Denim Jacket</h4>
+                  <p>Washed Blue / Size L</p>
+                </div>
+                <strong>$45.00</strong>
+              </div>
+
+              <div class="summary-list">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <strong>$70.00</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Shipping</span>
+                  <strong>$12.00</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Service fee</span>
+                  <strong>$3.00</strong>
+                </div>
+              </div>
+
+              <div class="summary-total">
+                <span>Total Payment</span>
+                <strong>$85.00</strong>
+              </div>
+
+              <div class="delivery-box">
+                <h4>Delivery Estimate</h4>
+                <p>Receive your order in 2-4 business days in major cities.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Fashion Store</p>
+      </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/cart-checkout.js"></script>
+  </body>
+</html>
