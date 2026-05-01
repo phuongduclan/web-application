@@ -9,9 +9,12 @@ class ProductController extends BaseController{
     }
     
     public function index(){
-        $productList=$this->productModel->getAllProduct();
+        $productList=$this->productModel->getAllProductWithCoverImage();
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.products.index',[
-            'products'=> $productList
+            'products'=> $productList,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
     public function store(){
@@ -37,9 +40,12 @@ class ProductController extends BaseController{
         $this->loadModel('ProductVariantModel');
         $productVariantModel=new ProductVariantModel();
         $variants=$productVariantModel->findProductVariantByProductId($id);
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.products.show',[
             'product'=>$product,
             'variants'=>$variants,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
     public function update(){

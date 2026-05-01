@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Danh mục</title>
-</head>
-<body>
-<p><a href="index.php?controller=home">Trang chủ</a> | <a href="index.php?controller=product&amp;action=index">Sản phẩm</a> | <a href="index.php?controller=cart">Giỏ hàng</a></p>
-<h1>Danh mục</h1>
-<?php if(empty($categories)){ ?>
-<p>Không có danh mục.</p>
+<?php
+
+require_once __DIR__ . '/../layouts/_helpers.php';
+
+$this->view('frontend.layouts.header', array(
+    'menus' => isset($categories) ? $categories : array(),
+    'pageTitle' => 'Danh mục',
+    'navActive' => 'categories',
+));
+?>
+<section class="product-page">
+    <div class="container">
+        <div class="section-header">
+            <h2>Danh mục</h2>
+            <p>Chọn danh mục để xem <strong>sản phẩm theo danh mục</strong>.</p>
+        </div>
+<?php if (empty($categories)) { ?>
+        <p>Không có danh mục.</p>
 <?php } else { ?>
-<ul>
-<?php foreach($categories as $c){ ?>
-<li><a href="index.php?controller=category&amp;action=show&amp;id=<?php echo (int)($c['id'] ?? 0); ?>"><?php echo htmlspecialchars((string)($c['name'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></a></li>
+        <ul style="list-style:none;padding:0;display:grid;gap:0.75rem;">
+<?php foreach ($categories as $c) {
+        $cid = (int) ($c['id'] ?? $c['category_id'] ?? 0);
+        $cname = (string) ($c['name'] ?? $c['category_name'] ?? 'Danh mục');
+?>
+            <li><a class="btn btn-outline" href="<?php echo htmlspecialchars(app_route('category', 'show', array('id' => $cid))); ?>"><?php echo htmlspecialchars($cname, ENT_QUOTES, 'UTF-8'); ?></a></li>
 <?php } ?>
-</ul>
+        </ul>
 <?php } ?>
-</body>
-</html>
+    </div>
+</section>
+<?php
+$this->view('frontend.layouts.footer');
+?>

@@ -1,20 +1,48 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Đăng ký</title>
-</head>
-<body>
-<h1>Đăng ký</h1>
-<p><a href="index.php?controller=home">Trang chủ</a> | <a href="index.php?controller=auth&amp;action=login">Đăng nhập</a></p>
-<?php if(!empty($error)){ ?>
-<p><?php echo htmlspecialchars((string)$error, ENT_QUOTES, 'UTF-8'); ?></p>
+<?php
+
+require_once __DIR__ . '/../layouts/_helpers.php';
+
+$error = isset($error) ? $error : null;
+
+$this->view('frontend.layouts.header', array(
+    'pageTitle' => 'Đăng ký',
+    'bodyClass' => 'login-page',
+));
+
+?>
+<section class="login-section">
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="login-left">
+                <h1>Tạo tài khoản</h1>
+                <p>Đăng ký để quản lý đơn hàng thuận tiện hơn.</p>
+                <img src="<?php echo htmlspecialchars(app_asset('images/banners/hero-banner.jpg')); ?>" alt="">
+            </div>
+            <div class="login-right">
+                <h2>Đăng ký</h2>
+<?php if (!empty($error)) { ?>
+                <p style="color:red;"><?php echo htmlspecialchars((string) $error, ENT_QUOTES, 'UTF-8'); ?></p>
 <?php } ?>
-<form method="post" action="index.php?controller=auth&amp;action=register">
-<p><label>Email<br><input type="email" name="email" required autocomplete="email"></label></p>
-<p><label>Mật khẩu (tối thiểu 8 ký tự)<br><input type="password" name="password" required minlength="8" autocomplete="new-password"></label></p>
-<p><label>Xác nhận mật khẩu<br><input type="password" name="confirmPassword" required minlength="8" autocomplete="new-password"></label></p>
-<p><button type="submit">Đăng ký</button></p>
-</form>
-</body>
-</html>
+                <form method="post" action="<?php echo htmlspecialchars(app_route('auth', 'register')); ?>" class="login-form">
+                    <div class="form-group">
+                        <label for="reg_email">Email</label>
+                        <input type="email" id="reg_email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_password">Mật khẩu (tối thiểu 8 ký tự)</label>
+                        <input type="password" id="reg_password" name="password" required minlength="8" autocomplete="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_confirm">Xác nhận mật khẩu</label>
+                        <input type="password" id="reg_confirm" name="confirmPassword" required minlength="8" autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn cart-cta">Đăng ký</button>
+                </form>
+                <p style="margin-top:1rem;"><a href="<?php echo htmlspecialchars(app_route('auth', 'login')); ?>">Đã có tài khoản? Đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+$this->view('frontend.layouts.footer');
+?>

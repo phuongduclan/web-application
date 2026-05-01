@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Tài khoản</title>
-</head>
-<body>
-<h1>Thông tin tài khoản</h1>
-<p><a href="index.php?controller=home">Trang chủ</a></p>
-<?php if(!empty($profile_success)){ ?>
-<p><?php echo htmlspecialchars((string)$profile_success, ENT_QUOTES, 'UTF-8'); ?></p>
+<?php
+
+require_once __DIR__ . '/../layouts/_helpers.php';
+
+$this->view('frontend.layouts.header', array(
+    'pageTitle' => 'Tài khoản',
+    'navActive' => 'shop',
+));
+
+$profile_success = isset($profile_success) ? $profile_success : null;
+$account = isset($account) && is_array($account) ? $account : array();
+
+?>
+<section class="product-page">
+    <div class="container">
+        <div class="section-header">
+            <h2>Thông tin tài khoản</h2>
+<?php if (!empty($profile_success)) { ?>
+            <p style="color:green;"><?php echo htmlspecialchars((string) $profile_success, ENT_QUOTES, 'UTF-8'); ?></p>
 <?php } ?>
-<p><strong>Email:</strong> <?php echo htmlspecialchars((string)($account['email'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
-<p>Họ tên, địa chỉ, số điện thoại: chưa có cột trong bảng Account theo schema hiện tại.</p>
-<p><a href="index.php?controller=auth&amp;action=changePassword">Đổi mật khẩu</a></p>
-</body>
-</html>
+            <p><strong>Email:</strong> <?php echo htmlspecialchars((string) ($account['email'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></p>
+            <p>Họ tên, địa chỉ: có thể bổ sung khi mở rộng schema người dùng.</p>
+            <p><a href="<?php echo htmlspecialchars(app_route('auth', 'changePassword')); ?>" class="btn btn-outline">Đổi mật khẩu</a></p>
+        </div>
+    </div>
+</section>
+<?php
+$this->view('frontend.layouts.footer');
+?>

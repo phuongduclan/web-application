@@ -31,5 +31,23 @@ class ProductModel extends BaseModel {
         $sql="SELECT * FROM " .self::TABLE. " WHERE category_id=?";
         return $this->executeQuery($sql,[$categoryId]);
     }
+
+    /**
+     * Sản phẩm theo danh mục + ảnh đại diện (ảnh một biến thể bất kỳ, thường id nhỏ nhất).
+     * Tên/mô tả cấp Product giữ chung; chi tiết biến thể ở ProductVariant.
+     */
+    public function getAllProductByCategoryIdWithCoverImage($categoryId){
+        $sql="SELECT p.*, (
+            SELECT TOP 1 pv.image FROM ProductVariant pv WHERE pv.product_id = p.id ORDER BY pv.id
+        ) AS cover_image FROM ".self::TABLE." p WHERE p.category_id = ? ORDER BY p.id";
+        return $this->executeQuery($sql,[$categoryId]);
+    }
+
+    public function getAllProductWithCoverImage(){
+        $sql="SELECT p.*, (
+            SELECT TOP 1 pv.image FROM ProductVariant pv WHERE pv.product_id = p.id ORDER BY pv.id
+        ) AS cover_image FROM ".self::TABLE." p ORDER BY p.id";
+        return $this->executeQuery($sql);
+    }
 }
 ?>
