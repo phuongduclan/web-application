@@ -105,6 +105,13 @@ $user_email_nav = isset($user_email) ? (string) $user_email : (isset($_SESSION['
                         <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
                     </svg>
                 </a>
+                <a class="button" href="<?php echo htmlspecialchars(app_route('auth', 'logout')); ?>" aria-label="Đăng xuất" title="Đăng xuất" onclick="return confirm('Đăng xuất khỏi tài khoản?');">
+                    <svg class="icon" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
 <?php } else { ?>
                 <a class="button" href="<?php echo htmlspecialchars(app_route('auth', 'login')); ?>" aria-label="Đăng nhập">
                     <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
