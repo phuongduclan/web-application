@@ -8,8 +8,6 @@ class Database
         try {
             $this->connect = new PDO(
                 "sqlsrv:Server=localhost\\SQLEXPRESS;Database=web_database;Encrypt=true;TrustServerCertificate=true",
-                "sa",
-                "@Bina0608",
                 array(
                     PDO::SQLSRV_ATTR_ENCODING => PDO::SQLSRV_ENCODING_UTF8,
                 )
