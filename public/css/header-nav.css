@@ -57,3 +57,86 @@
     height: 34px;
   }
 }
+
+/* SEARCH INLINE — Uiverse.io style by boryanakrasteva */
+.hdr-search-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hdr-search-inline[hidden] {
+  display: none !important;
+}
+
+.input-container {
+  width: 220px;
+  position: relative;
+}
+
+.input-container .icon {
+  position: absolute;
+  right: 10px;
+  top: calc(50% + 5px);
+  transform: translateY(calc(-50% - 5px));
+  pointer-events: none;
+}
+
+.input-container .input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  transition: 0.2s linear;
+  border: 2.5px solid black;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: #fff;
+  color: #000;
+  font-family: inherit;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.input-container .input:focus {
+  outline: none;
+  border: 0.5px solid black;
+  box-shadow: -5px -5px 0px black;
+}
+
+.input-container:hover > .icon {
+  animation: hdrSearchAnim 1s linear infinite;
+}
+
+@keyframes hdrSearchAnim {
+  0%, 100% {
+    transform: translateY(calc(-50% - 5px)) scale(1);
+  }
+  50% {
+    transform: translateY(calc(-50% - 5px)) scale(1.1);
+  }
+}
+
+.hdr-search-close-inline {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s ease, transform 0.15s ease;
+  font-family: inherit;
+}
+
+.hdr-search-close-inline:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: rotate(90deg);
+}
+
+.button-container[hidden] {
+  display: none !important;
+}
+

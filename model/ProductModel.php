@@ -49,5 +49,20 @@ class ProductModel extends BaseModel {
         ) AS cover_image FROM ".self::TABLE." p ORDER BY p.id";
         return $this->executeQuery($sql);
     }
+
+    /**
+     * Tìm sản phẩm theo tên (LIKE) + ảnh đại diện. Trả về luôn cả tên danh mục để hiển thị.
+     */
+    public function searchProductsWithCoverImage($keyword){
+        $kw = '%' . trim((string) $keyword) . '%';
+        $sql = "SELECT p.*, c.name AS category_name, (
+            SELECT TOP 1 pv.image FROM ProductVariant pv WHERE pv.product_id = p.id ORDER BY pv.id
+        ) AS cover_image
+        FROM ".self::TABLE." p
+        LEFT JOIN Category c ON c.id = p.category_id
+        WHERE p.name LIKE ? OR c.name LIKE ?
+        ORDER BY p.id";
+        return $this->executeQuery($sql, array($kw, $kw));
+    }
 }
 ?>
