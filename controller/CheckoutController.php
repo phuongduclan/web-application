@@ -28,11 +28,14 @@ class CheckoutController extends BaseController {
         }
         $checkoutError=$_SESSION['checkout_error'] ?? null;
         unset($_SESSION['checkout_error']);
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.checkout.index',[
             'methods'=>$methods,
             'cart'=>$_SESSION['cart'],
             'cartTotal'=>$cartTotal,
             'checkoutError'=>$checkoutError,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
 
@@ -132,8 +135,15 @@ class CheckoutController extends BaseController {
             header('Location: index.php?controller=invoice&action=index');
             exit;
         }
+        $this->loadModel('StatusModel');
+        $statusModel=new StatusModel();
+        $orderStatus=$statusModel->findByStatusId((int)($invoice['status_id'] ?? 0));
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.checkout.success',[
             'invoice'=>$invoice,
+            'status'=>$orderStatus,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
 }

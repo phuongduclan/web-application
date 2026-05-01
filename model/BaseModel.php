@@ -1,5 +1,5 @@
 <?php
-class BaseModel extends Database 
+class BaseModel extends Database
 {
     protected $connect;
 
@@ -7,64 +7,97 @@ class BaseModel extends Database
     {
         $this->connect = $this->connect();
     }
-    // SELECT * FROM Table
+
     public function getAll($table)
     {
-        $sql="SELECT * FROM {$table}";
+        $sql = "SELECT * FROM {$table}";
         return $this->executeQuery($sql);
     }
-    // SELECT * FROM Table WHERE table_id
-    public function findById($table,$id)
+
+    public function findById($table, $id)
     {
-        $sql="SELECT  * FROM {$table} WHERE id = ? ";
-        $stmt=$this->connect->prepare($sql);
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM {$table} WHERE id = ?";
+        return $this->executeQuery($sql, array((int) $id))[0] ?? null;
     }
-    // INSERT INTO Table(table_id, table_name, description) VALUES (?,?,?)
-    public function create($table, array $data=[])
+
+    public function create($table, array $data = array())
     {
+        if (empty($data)) {
+            return false;
+        }
         $columns = implode(',', array_keys($data));
-        $values=array_map(function($value){
-            if(is_string($value))
-            {
-                return "'".$value."'";
-            }
-            else
-            {
-                return $value;
-            }
-        },array_values($data));
-        $values=implode(',', $values);
-        $sql="INSERT INTO {$table}({$columns}) VALUES({$values})";
-        return $this->executeNonQuery($sql);
+        $placeholders = implode(',', array_fill(0, count($data), '?'));
+        $sql = "INSERT INTO {$table}({$columns}) VALUES({$placeholders})";
+        return $this->executeNonQuery($sql, array_values($data));
     }
-    // Update Table SET table_name
+
     public function update($table, $id, $data)
     {
-        $set = [];
-        foreach($data as $key => $value){
-            array_push($set, "{$key} = '$value'");
+        if (empty($data)) {
+            return false;
         }
-        $data = implode(',',$set);
-        $sql = "UPDATE $table SET $data WHERE id = $id";
-        return $this->executeNonQuery($sql);
+        $sets = array();
+        foreach (array_keys($data) as $key) {
+            $sets[] = "{$key} = ?";
+        }
+        $sql = "UPDATE {$table} SET " . implode(',', $sets) . " WHERE id = ?";
+        $params = array_values($data);
+        $params[] = (int) $id;
+        return $this->executeNonQuery($sql, $params);
     }
+
     public function delete($table, $id)
     {
-        $sql="DELETE FROM {$table} WHERE id={$id}";
-        return $this->executeNonQuery($sql);
+        $sql = "DELETE FROM {$table} WHERE id = ?";
+        return $this->executeNonQuery($sql, array((int) $id));
     }
-    protected function executeQuery($sql,array $params=[])
-    {
-        $stmt=$this->connect->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    protected function executeNonQuery($sql, array $params = [])
+
+    protected function executeQuery($sql, array $params = array())
     {
         $stmt = $this->connect->prepare($sql);
-        return $stmt->execute($params);
+        $this->bindParams($stmt, $params);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    protected function executeNonQuery($sql, array $params = array())
+    {
+        $stmt = $this->connect->prepare($sql);
+        $this->bindParams($stmt, $params);
+        return $stmt->execute();
+    }
+
+    /**
+     * Bind every parameter explicitly so string params are sent as UTF-8
+     * to NVARCHAR columns. Without this, pdo_sqlsrv uses SQLSRV_ENCODING_CHAR
+     * (Windows-1252) by default and Vietnamese characters become "?".
+     */
+    private function bindParams($stmt, array $params)
+    {
+        // Hold references because bindParam takes by-reference.
+        static $refs;
+        $refs = array();
+        $i = 1;
+        foreach ($params as $key => $value) {
+            $refs[$key] = $value;
+            if (is_int($value)) {
+                $stmt->bindParam($i, $refs[$key], PDO::PARAM_INT);
+            } elseif (is_bool($value)) {
+                $stmt->bindParam($i, $refs[$key], PDO::PARAM_BOOL);
+            } elseif (is_null($value)) {
+                $stmt->bindValue($i, null, PDO::PARAM_NULL);
+            } else {
+                $refs[$key] = (string) $value;
+                $stmt->bindParam(
+                    $i,
+                    $refs[$key],
+                    PDO::PARAM_STR,
+                    0,
+                    PDO::SQLSRV_ENCODING_UTF8
+                );
+            }
+            $i++;
+        }
     }
 }
 ?>

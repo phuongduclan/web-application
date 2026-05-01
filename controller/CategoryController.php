@@ -20,7 +20,7 @@ class CategoryController extends BaseController {
         $id = $_GET['id'] ?? null;
         $categoriesMenu =$this->categoryModel->getCategoryForMenu();
         $category = $this->categoryModel->findByCategoryId($id);
-        $products = $this->productModel->getAllProductByCategoryId($id);
+        $products = $this->productModel->getAllProductByCategoryIdWithCoverImage($id);
 
         return $this->view('frontend.categories.show', [
             'menus'    => $categoriesMenu,

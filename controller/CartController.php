@@ -29,11 +29,14 @@ class CartController extends BaseController {
         foreach($_SESSION['cart'] as $line){
             $cartTotal+=(int)($line['price'] ?? 0)*(int)($line['qty'] ?? 0);
         }
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.carts.index',[
             'cart'=>$_SESSION['cart'],
             'cartTotal'=>$cartTotal,
             'cartError'=>$cartError,
             'logged_in'=>!empty($_SESSION['user_id']),
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
 

@@ -15,8 +15,11 @@ class InvoiceController extends BaseController{
             exit;
         }
         $invoiceList=$this->invoiceModel->getInvoicesForUserWithStatus((int)$_SESSION['user_id']);
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.invoices.index',[
             'invoices'=>$invoiceList,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
 
@@ -61,6 +64,8 @@ class InvoiceController extends BaseController{
         }
         $invoiceMessage=$_SESSION['invoice_message'] ?? null;
         unset($_SESSION['invoice_message']);
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.invoices.show',[
             'invoice'=>$invoice,
             'details'=>$details,
@@ -69,6 +74,7 @@ class InvoiceController extends BaseController{
             'paymentMethodName'=>$paymentMethodName,
             'canCancel'=>$canCancel,
             'invoiceMessage'=>$invoiceMessage,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
 

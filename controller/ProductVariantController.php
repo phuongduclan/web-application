@@ -8,8 +8,11 @@ class ProductVariantController extends BaseController{
     }
     public function index(){
         $productVariantList = $this->productVariantModel->getAllProductVariant();
+        $this->loadModel('CategoryModel');
+        $categoryModel=new CategoryModel();
         return $this->view('frontend.variants.index',[
-            'productVariants' => $productVariantList
+            'productVariants' => $productVariantList,
+            'menus'=>$categoryModel->getCategoryForMenu(),
         ]);
     }
     public function store(){

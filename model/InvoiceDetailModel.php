@@ -12,7 +12,10 @@ class InvoiceDetailModel extends BaseModel {
     }
 
     public function getRowsWithProductForInvoice($invoiceId){
-        $sql='SELECT d.id, d.variant_id, d.invoice_id, d.price, d.quantity, pv.size, pv.color, pv.image, p.name AS product_name
+        $sql='SELECT d.id AS detail_id, d.variant_id, d.invoice_id, d.price, d.quantity,
+            pv.id AS variant_pv_id, pv.product_id, pv.size AS variant_size, pv.color AS variant_color,
+            pv.image AS variant_image, pv.price AS variant_list_price,
+            p.name AS product_name
             FROM '.self::TABLE.' d
             INNER JOIN ProductVariant pv ON pv.id = d.variant_id
             INNER JOIN Product p ON p.id = pv.product_id
