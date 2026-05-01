@@ -14,6 +14,7 @@ $layoutExtraJs = isset($layoutExtraJs) ? $layoutExtraJs : array();
 </footer>
 
 <script src="<?php echo htmlspecialchars(app_asset('js/main.js')); ?>"></script>
+<script src="<?php echo htmlspecialchars(app_asset('js/header-search.js')); ?>"></script>
 <?php foreach ($layoutExtraJs as $js) { ?>
 <script src="<?php echo htmlspecialchars(app_asset('js/' . ltrim((string) $js, '/'))); ?>"></script>
 <?php } ?>

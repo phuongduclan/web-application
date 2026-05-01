@@ -19,11 +19,21 @@ if (!function_exists('app_base_path')) {
 if (!function_exists('app_asset')) {
     /**
      * Static files phục vụ qua Apache: thư mục /public (css, js, images).
+     * Tự động thêm ?v=mtime cho css/js để chống browser cache file cũ.
      */
     function app_asset($path)
     {
         $base = app_base_path();
-        return ($base === '' ? '' : $base) . '/public/' . ltrim(str_replace('\\', '/', $path), '/');
+        $rel  = ltrim(str_replace('\\', '/', $path), '/');
+        $url  = ($base === '' ? '' : $base) . '/public/' . $rel;
+        $ext  = strtolower(pathinfo($rel, PATHINFO_EXTENSION));
+        if ($ext === 'css' || $ext === 'js') {
+            $abs = __DIR__ . '/../../../public/' . $rel;
+            if (is_file($abs)) {
+                $url .= '?v=' . filemtime($abs);
+            }
+        }
+        return $url;
     }
 }
 

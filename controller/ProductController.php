@@ -9,12 +9,18 @@ class ProductController extends BaseController{
     }
     
     public function index(){
-        $productList=$this->productModel->getAllProductWithCoverImage();
+        $q = isset($_GET['q']) ? trim((string) $_GET['q']) : '';
+        if ($q !== '') {
+            $productList = $this->productModel->searchProductsWithCoverImage($q);
+        } else {
+            $productList = $this->productModel->getAllProductWithCoverImage();
+        }
         $this->loadModel('CategoryModel');
         $categoryModel=new CategoryModel();
         return $this->view('frontend.products.index',[
-            'products'=> $productList,
-            'menus'=>$categoryModel->getCategoryForMenu(),
+            'products'    => $productList,
+            'menus'       => $categoryModel->getCategoryForMenu(),
+            'searchQuery' => $q,
         ]);
     }
     public function store(){

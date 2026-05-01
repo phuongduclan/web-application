@@ -72,17 +72,33 @@ $user_email_nav = isset($user_email) ? (string) $user_email : (isset($_SESSION['
             <a href="<?php echo htmlspecialchars(app_route('invoice')); ?>" class="<?php echo $navActive === 'orders' ? 'active' : ''; ?>">Đơn hàng</a>
         </nav>
         <div class="header-actions">
-            <div class="button-container" role="group" aria-label="Điều hướng">
+            <form class="hdr-search-inline" id="hdrSearchInline" method="get" action="<?php echo htmlspecialchars(app_route('product')); ?>" role="search" hidden>
+                <input type="hidden" name="controller" value="product">
+                <input type="hidden" name="action" value="index">
+                <div class="input-container">
+                    <input type="text" name="q" id="hdrSearchInput" class="input" placeholder="Tìm kiếm..." autocomplete="off">
+                    <span class="icon" aria-hidden="true">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                </div>
+                <button type="button" class="hdr-search-close-inline" id="hdrSearchClose" aria-label="Đóng">×</button>
+            </form>
+            <div class="button-container" id="hdrButtonContainer" role="group" aria-label="Điều hướng">
                 <a class="button <?php echo $navActive === 'home' ? 'is-active' : ''; ?>" href="<?php echo htmlspecialchars(app_route('home')); ?>" aria-label="Trang chủ">
                     <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
                     </svg>
                 </a>
-                <a class="button <?php echo $navActive === 'shop' ? 'is-active' : ''; ?>" href="<?php echo htmlspecialchars(app_route('product')); ?>" aria-label="Tìm sản phẩm">
+                <button type="button" class="button" id="hdrSearchBtn" aria-label="Tìm sản phẩm" aria-controls="hdrSearchInline" aria-expanded="false">
                     <svg class="icon" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
-                </a>
+                </button>
 <?php if ($logged_in_nav) { ?>
                 <a class="button" href="<?php echo htmlspecialchars(app_route('auth', 'profile')); ?>" aria-label="Tài khoản" title="<?php echo htmlspecialchars($user_email_nav, ENT_QUOTES, 'UTF-8'); ?>">
                     <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
