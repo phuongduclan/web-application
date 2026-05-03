@@ -6,7 +6,6 @@ class Database
     public function connect()
     {
         try {
-            // Thứ tự PDO: (dsn, username, password, options). Integrated Security => null, null.
             $this->connect = new PDO(
                 "sqlsrv:Server=localhost\\SQLEXPRESS;Database=web_database;Encrypt=true;TrustServerCertificate=true",
                 null,
